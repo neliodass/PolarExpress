@@ -197,8 +197,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4277349668014377981, guid: 54dbc5e5b8dc616668dfa00aedf4755d, type: 3}
+      propertyPath: _groundedCheckRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277349668014377981, guid: 54dbc5e5b8dc616668dfa00aedf4755d, type: 3}
       propertyPath: _standUpBlockMask.m_Bits
       value: 520
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710797097484751473, guid: 54dbc5e5b8dc616668dfa00aedf4755d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7450368623247333811, guid: 54dbc5e5b8dc616668dfa00aedf4755d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -760,7 +768,7 @@ GameObject:
   - component: {fileID: 1503107937}
   - component: {fileID: 1503107936}
   - component: {fileID: 1503107935}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,6 +958,10 @@ PrefabInstance:
       propertyPath: _stateProviderSource
       value: 
       objectReference: {fileID: 514662109}
+    - target: {fileID: 8246456916446184239, guid: d315f5d3bbbc82f1787f0aa8105cf0da, type: 3}
+      propertyPath: _offset.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8246456916446184239, guid: d315f5d3bbbc82f1787f0aa8105cf0da, type: 3}
       propertyPath: _smoothTime
       value: 0.15
