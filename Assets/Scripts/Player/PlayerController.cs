@@ -20,7 +20,7 @@ namespace Player.Interfaces
         private ICameraRotator _cameraRotator;
         [SerializeField] private MonoBehaviour _cameraFollowerSource;
         private ICameraFollower _cameraFollower;
-        
+
         [SerializeField] private MonoBehaviour _crouchSource;
         private ICrouchable _crouchable;
 
@@ -31,17 +31,18 @@ namespace Player.Interfaces
         [Header("Look Settings")] public float MouseSensitivity = 1f;
         public float PlayerRotationSpeed = 100f;
         [SerializeField] private bool _isInverted = false;
-        
-        [Header("Camera Settings")]
-        [SerializeField] private float _crouchCameraHeightOffset = -1f;
-        
+
+        [Header("Camera Settings")] [SerializeField]
+        private float _crouchCameraHeightOffset = -1f;
+
         private float _inversionFactor = 1f;
         public bool IsInverted => _isInverted;
-        
-        
+
+
         private Vector3 _originalCameraOffset;
         private Vector3 _crouchCameraOffset;
         private bool _isCrouching = false;
+
         private void Awake()
         {
             if (!AssignSources())
@@ -51,78 +52,82 @@ namespace Player.Interfaces
 
             UpdateInversionFactor();
             _cameraFollower.SetTarget(transform);
-            
+
             _originalCameraOffset = _cameraFollower.Offset;
             _crouchCameraOffset = _originalCameraOffset + new Vector3(0f, _crouchCameraHeightOffset, 0f);
-            
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
         private void UpdateInversionFactor()
         {
             _inversionFactor = _isInverted ? -1f : 1f;
         }
+
         public void SetInverted(bool inverted)
         {
             _isInverted = inverted;
             UpdateInversionFactor();
         }
+
         private void OnDestroy()
         {
         }
 
         private bool AssignSources()
+        {
+            _inputProvider = _inputProviderSource as IInputProvider;
+            if (_inputProvider == null)
             {
-                _inputProvider = _inputProviderSource as IInputProvider;
-                if (_inputProvider == null)
-                {
-                    Debug.LogError("IInputProvider not found");
-                    enabled = false;
-                    return false;
-                }
-
-                _mouseInput = _lookSource as IMouseInput;
-                if (_mouseInput == null)
-                {
-                    Debug.LogError("IMouseInput not found");
-                    enabled = false;
-                    return false;
-                }
-
-                _movable = _movementSource as IMovable;
-                if (_movable == null)
-                {
-                    Debug.LogError("IMovable not found");
-                    enabled = false;
-                    return false;
-                }
-                
-                _crouchable = _crouchSource.GetComponent<ICrouchable>();
-                if (_crouchable == null)
-                {
-                    Debug.LogError("ICrouchable not found");
-                    enabled = false;
-                    return false;
-                }
-                
-                
-                _cameraRotator = _cameraRotatorSource as ICameraRotator;
-                if (_cameraRotator == null)
-                {
-                    Debug.LogError("ICameraRotator not found");
-                    //enabled = false;
-                    return false;
-                }
-                _cameraFollower = _cameraFollowerSource as ICameraFollower;
-                if (_cameraFollower == null)
-                {
-                    Debug.LogError("ICameraFollower not found");
-                    //enabled = false;
-                    return false;
-                }
-
-                return true;
+                Debug.LogError("IInputProvider not found");
+                enabled = false;
+                return false;
             }
+
+            _mouseInput = _lookSource as IMouseInput;
+            if (_mouseInput == null)
+            {
+                Debug.LogError("IMouseInput not found");
+                enabled = false;
+                return false;
+            }
+
+            _movable = _movementSource as IMovable;
+            if (_movable == null)
+            {
+                Debug.LogError("IMovable not found");
+                enabled = false;
+                return false;
+            }
+
+            _crouchable = _crouchSource.GetComponent<ICrouchable>();
+            if (_crouchable == null)
+            {
+                Debug.LogError("ICrouchable not found");
+                enabled = false;
+                return false;
+            }
+
+
+            _cameraRotator = _cameraRotatorSource as ICameraRotator;
+            if (_cameraRotator == null)
+            {
+                Debug.LogError("ICameraRotator not found");
+                //enabled = false;
+                return false;
+            }
+
+            _cameraFollower = _cameraFollowerSource as ICameraFollower;
+            if (_cameraFollower == null)
+            {
+                Debug.LogError("ICameraFollower not found");
+                //enabled = false;
+                return false;
+            }
+
+            return true;
+        }
 
         private void Update()
         {
@@ -142,7 +147,7 @@ namespace Player.Interfaces
         private void HandleLook()
         {
             Vector2 mouseDelta = _mouseInput.GetLookDelta() * MouseSensitivity;
-            _movable.Rotate(mouseDelta.x*_inversionFactor * PlayerRotationSpeed * Time.deltaTime);
+            _movable.Rotate(mouseDelta.x * _inversionFactor * PlayerRotationSpeed * Time.deltaTime);
             _cameraRotator?.RotateVertical(mouseDelta.y);
         }
 
@@ -154,7 +159,7 @@ namespace Player.Interfaces
                 _movable.Jump(_movable.JumpForce);
             }
         }
-        
+
         private void HandleCrouch()
         {
             bool wantsToCrouch = _inputProvider.GetCrouchButtonHeld();
@@ -166,30 +171,37 @@ namespace Player.Interfaces
             }
             else if (!wantsToCrouch && _isCrouching)
             {
-                _isCrouching = false;
-                _cameraFollower.SetOffset(_originalCameraOffset);
-                _crouchable.SetCrouch(false);
+                if (_crouchable.CanStandUp())
+                {
+                    _isCrouching = false;
+                    _cameraFollower.SetOffset(_originalCameraOffset);
+                    _crouchable.SetCrouch(false);
+                }
             }
-            
         }
+
         #region IPlayerStateProvider Implementation
+
         public float GetCurrentSpeed()
         {
             return _movable.GetCurrentSpeed();
         }
+
         public float GetBaseSpeed()
         {
             return WalkSpeed;
         }
+
         public bool IsGrounded()
         {
-            
             return _movable.IsGrounded;
         }
+
         public bool IsCrouching()
         {
             return _isCrouching;
         }
+
         #endregion
     }
 }

@@ -4,6 +4,7 @@ namespace Player.Interfaces
     {
         void SetCrouch(bool isCrouching);
         bool IsCrouching { get; }
+        bool CanStandUp();
     }
 
 }

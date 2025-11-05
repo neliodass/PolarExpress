@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8391712205722136906}
   - component: {fileID: 7885996086657478616}
   - component: {fileID: 7724601010960420220}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,12 +156,15 @@ MonoBehaviour:
   _lookSource: {fileID: 7724601010960420220}
   _cameraRotatorSource: {fileID: 0}
   _cameraFollowerSource: {fileID: 0}
+  _crouchSource: {fileID: 0}
   WalkSpeed: 5
   SprintSpeed: 8
+  CrouchSpeed: 2
   JumpForce: 8
   MouseSensitivity: 1
   PlayerRotationSpeed: 10
   _isInverted: 0
+  _crouchCameraHeightOffset: -1
 --- !u!114 &7885996086657478616
 MonoBehaviour:
   m_ObjectHideFlags: 0
