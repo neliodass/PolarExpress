@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerCharacterMovement : MonoBehaviour, IMovable
+    public class PlayerCharacterMovement : MonoBehaviour, IMovable, ICrouchable
     {
         [Header("Movement")] [SerializeField] private float _gravity = -9.81f;
         [SerializeField] private float _jumpForce = 3f;
@@ -12,13 +12,22 @@ namespace Player
         [SerializeField] private float _groundedCheckRadius = 0.3f;
         [SerializeField] private LayerMask _groundMask;
 
+        [Header("Crouch Settings")] [SerializeField]
+        private float _crouchHeight = 1.0f;
+
         private CharacterController _characterController;
         private Vector3 _currentMovementDirection;
         private float _currentMovementSpeed;
         private Vector3 _verticalVelocity;
         private bool _isGrounded;
-        
-        private float _actualCurrentSpeedMagnitude; 
+
+        private float _actualCurrentSpeedMagnitude;
+
+        private float _originalHeight;
+        private Vector3 _originalCenter;
+        private Vector3 _crouchCenter;
+        public bool IsCrouching { get; private set; }
+
 
         public bool IsGrounded => _isGrounded;
 
@@ -35,7 +44,14 @@ namespace Player
             {
                 Debug.LogError("CharacterController not found");
                 enabled = false;
+                return;
             }
+
+            _originalHeight = _characterController.height;
+            _originalCenter = _characterController.center;
+            float oldBase = _originalCenter.y - (_originalHeight / 2f);
+            float newBase = oldBase + (_crouchHeight / 2f);
+            _crouchCenter = new Vector3(_originalCenter.x, newBase, _originalCenter.z);
         }
 
         private void Update()
@@ -57,6 +73,7 @@ namespace Player
 
         public void Jump(float force)
         {
+            if (IsCrouching) return;
             _verticalVelocity.y = Mathf.Sqrt(force * -2f * _gravity);
         }
 
@@ -83,7 +100,8 @@ namespace Player
             Vector3 finalMovement = (_currentMovementDirection * _currentMovementSpeed) +
                                     (_verticalVelocity.y * Vector3.up);
             _characterController.Move(finalMovement * Time.deltaTime);
-            _actualCurrentSpeedMagnitude = new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z).magnitude;
+            _actualCurrentSpeedMagnitude =
+                new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z).magnitude;
         }
 
         private void CheckGroundStatus()
@@ -92,14 +110,31 @@ namespace Player
                                    Vector3.down * ((_characterController.height / 2f) - _groundedCheckOffset);
             _isGrounded = Physics.CheckSphere(sphereOrigin, _groundedCheckRadius, _groundMask);
         }
-        
+
         public float GetCurrentSpeed()
         {
             return _actualCurrentSpeedMagnitude;
         }
+
         public bool IsMoving()
         {
-            return _actualCurrentSpeedMagnitude > 0.05f; 
+            return _actualCurrentSpeedMagnitude > 0.05f;
+        }
+
+        public void SetCrouch(bool isCrouching)
+        {
+            if (isCrouching == IsCrouching) return;
+            IsCrouching = isCrouching;
+            if (IsCrouching)
+            {
+                _characterController.height = _crouchHeight;
+                _characterController.center = _crouchCenter;
+            }
+            else
+            {
+                _characterController.height = _originalHeight;
+                _characterController.center = _originalCenter;
+            }
         }
     }
 }

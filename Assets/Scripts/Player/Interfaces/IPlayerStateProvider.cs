@@ -6,5 +6,6 @@ namespace Player.Interfaces
         float GetCurrentSpeed();
         float GetBaseSpeed();
         bool IsGrounded();
+        public bool IsCrouching();
     }
 }

@@ -9,5 +9,7 @@ namespace Player.Interfaces
         void ClearTarget();
         void SetOffset(Vector3 offset);
         
+        Vector3 Offset { get; }
+        
     }
 }
