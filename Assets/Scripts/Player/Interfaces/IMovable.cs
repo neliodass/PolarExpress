@@ -9,5 +9,9 @@ namespace Player.Interfaces
         void Rotate(float horizontalRotationAmount);
         bool IsGrounded { get; }
         float JumpForce { get; set; }
+
+        bool IsMoving();
+        float GetCurrentSpeed();
+
     }
 }

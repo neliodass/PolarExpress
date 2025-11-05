@@ -17,6 +17,8 @@ namespace Player
         private float _currentMovementSpeed;
         private Vector3 _verticalVelocity;
         private bool _isGrounded;
+        
+        private float _actualCurrentSpeedMagnitude; 
 
         public bool IsGrounded => _isGrounded;
 
@@ -81,6 +83,7 @@ namespace Player
             Vector3 finalMovement = (_currentMovementDirection * _currentMovementSpeed) +
                                     (_verticalVelocity.y * Vector3.up);
             _characterController.Move(finalMovement * Time.deltaTime);
+            _actualCurrentSpeedMagnitude = new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z).magnitude;
         }
 
         private void CheckGroundStatus()
@@ -88,6 +91,15 @@ namespace Player
             Vector3 sphereOrigin = transform.position +
                                    Vector3.down * ((_characterController.height / 2f) - _groundedCheckOffset);
             _isGrounded = Physics.CheckSphere(sphereOrigin, _groundedCheckRadius, _groundMask);
+        }
+        
+        public float GetCurrentSpeed()
+        {
+            return _actualCurrentSpeedMagnitude;
+        }
+        public bool IsMoving()
+        {
+            return _actualCurrentSpeedMagnitude > 0.05f; 
         }
     }
 }

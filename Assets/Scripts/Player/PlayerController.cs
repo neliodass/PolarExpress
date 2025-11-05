@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Player.Interfaces
 {
     [RequireComponent(typeof(PlayerCharacterMovement))]
-    public class PlayerController : MonoBehaviour, IInvertible
+    public class PlayerController : MonoBehaviour, IInvertible, IPlayerStateProvider
     {
         [Header("Dependecies")] [SerializeField]
         private MonoBehaviour _inputProviderSource;
@@ -128,5 +128,20 @@ namespace Player.Interfaces
                 _movable.Jump(_movable.JumpForce);
             }
         }
+        #region IPlayerStateProvider Implementation
+        public float GetCurrentSpeed()
+        {
+            return _movable.GetCurrentSpeed();
+        }
+        public float GetBaseSpeed()
+        {
+            return WalkSpeed;
+        }
+        public bool IsGrounded()
+        {
+            
+            return _movable.IsGrounded;
+        }
+        #endregion
     }
 }
