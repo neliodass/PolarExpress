@@ -122,11 +122,11 @@ namespace Player.Interfaces
 
         private void HandleJump()
         {
-            // if (!_inputProvider.GetJumpButtonDown()) return;
-            // if (_movable.IsGrounded)
-            // {
-            //     _movable.Jump(_movable.JumpForce);
-            // }
+            if (!_inputProvider.GetJumpButtonDown()) return;
+            if (_movable.IsGrounded)
+            {
+                _movable.Jump(_movable.JumpForce);
+            }
         }
     }
 }

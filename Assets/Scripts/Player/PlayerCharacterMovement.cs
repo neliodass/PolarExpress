@@ -42,21 +42,19 @@ namespace Player
             ApplyGravity();
             ApplyMovement();
             Debug.DrawRay(transform.position, transform.forward * 2f, Color.red);
-
         }
 
         public void Move(Vector3 direction, float speed)
         {
-            
             _currentMovementDirection = transform.TransformDirection(direction);
             _currentMovementDirection.y = 0;
-            _currentMovementDirection.Normalize(); 
+            _currentMovementDirection.Normalize();
             _currentMovementDirection = Vector3.ClampMagnitude(_currentMovementDirection, 1f);
             _currentMovementSpeed = speed;
         }
 
         public void Jump(float force)
-        { 
+        {
             _verticalVelocity.y = Mathf.Sqrt(force * -2f * _gravity);
         }
 
@@ -64,7 +62,7 @@ namespace Player
         {
             transform.Rotate(Vector3.up, horizontalRotationAmount);
         }
-        
+
         private void ApplyGravity()
         {
             if (_isGrounded)
@@ -80,16 +78,16 @@ namespace Player
 
         private void ApplyMovement()
         {
-            Vector3 finalMovement = (_currentMovementDirection * _currentMovementSpeed) + (_verticalVelocity.y*Vector3.up);
+            Vector3 finalMovement = (_currentMovementDirection * _currentMovementSpeed) +
+                                    (_verticalVelocity.y * Vector3.up);
             _characterController.Move(finalMovement * Time.deltaTime);
         }
+
         private void CheckGroundStatus()
         {
-            Vector3 sphereOrigin = transform.position + Vector3.down * ((_characterController.height / 2f) - _groundedCheckOffset);
+            Vector3 sphereOrigin = transform.position +
+                                   Vector3.down * ((_characterController.height / 2f) - _groundedCheckOffset);
             _isGrounded = Physics.CheckSphere(sphereOrigin, _groundedCheckRadius, _groundMask);
-           
-            
         }
-
     }
 }
