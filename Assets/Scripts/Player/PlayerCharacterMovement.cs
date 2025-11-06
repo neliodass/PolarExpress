@@ -6,14 +6,14 @@ namespace Player
     [RequireComponent(typeof(CharacterController))]
     public class PlayerCharacterMovement : MonoBehaviour, IMovable, ICrouchable
     {
-        [Header("Movement")] [SerializeField] private float _gravity = -9.81f;
+        [Header("Movement")] [SerializeField] private readonly float _gravity = -9.81f;
         [SerializeField] private float _jumpForce = 3f;
-        [SerializeField] private float _groundedCheckOffset = -0.1f;
-        [SerializeField] private float _groundedCheckRadius = 0.3f;
+        [SerializeField] private readonly float _groundedCheckOffset = -0.1f;
+        [SerializeField] private readonly float  _groundedCheckRadius = 0.3f;
         [SerializeField] private LayerMask _groundMask;
 
         [Header("Crouch Settings")] [SerializeField]
-        private float _crouchHeight = 1.0f;
+        private readonly float _crouchHeight = 1.0f;
         [SerializeField] private LayerMask _standUpBlockMask;
         private CharacterController _characterController;
         private Vector3 _currentMovementDirection;
@@ -144,26 +144,21 @@ namespace Player
             Vector3 point1 = capsuleCenter + (Vector3.down * halfHeight);
             Vector3 point2 = capsuleCenter + (Vector3.up * halfHeight);
             float radius = _characterController.radius;
-            bool isBlocked = Physics.CheckCapsule(point1, point2, radius, _standUpBlockMask,QueryTriggerInteraction.Ignore);
+            bool isBlocked = Physics.CheckCapsule(point1, point2, radius, _standUpBlockMask, QueryTriggerInteraction.Ignore);
             return !isBlocked;
         }
         private void OnDrawGizmosSelected()
         {
-            // Ta funkcja narysuje w edytorze kapsułę, którą sprawdzamy
-            // Będzie widoczna tylko, gdy zaznaczysz gracza w scenie
-        
-            // Zabezpieczenie, jeśli Awake() jeszcze nie ruszyło
-            if (_characterController == null || _originalHeight == 0)
+           
+            if (_characterController == null ||Mathf.Approximately(_originalHeight, 0f))
             {
-                // Spróbuj pobrać wartości na szybko, jeśli jesteśmy w edytorze
                 CharacterController controller = GetComponent<CharacterController>();
                 if (controller == null) return;
             
                 _originalHeight = controller.height;
                 _originalCenter = controller.center;
             }
-
-            // --- Dokładnie ta sama logika co w CanStandUp() ---
+            
             Vector3 capsuleCenter = transform.position + _originalCenter;
             float halfHeight = (_originalHeight / 2f) - _characterController.radius;
             Vector3 point1 = capsuleCenter + (Vector3.down * halfHeight);
@@ -173,15 +168,10 @@ namespace Player
             bool isBlocked = Physics.CheckCapsule(
                 point1, point2, radius, _standUpBlockMask, QueryTriggerInteraction.Ignore
             );
-            // --- Koniec logiki ---
-
-            // Narysuj kapsułę: czerwoną jeśli zablokowana, zieloną jeśli wolna
             Gizmos.color = isBlocked ? Color.red : Color.green;
         
             Gizmos.DrawWireSphere(point1, radius);
             Gizmos.DrawWireSphere(point2, radius);
-        
-            // Narysuj 4 linie łączące, żeby wyglądało jak kapsuła
             Gizmos.DrawLine(point1 + Vector3.right * radius, point2 + Vector3.right * radius);
             Gizmos.DrawLine(point1 + Vector3.left * radius, point2 + Vector3.left * radius);
             Gizmos.DrawLine(point1 + Vector3.forward * radius, point2 + Vector3.forward * radius);

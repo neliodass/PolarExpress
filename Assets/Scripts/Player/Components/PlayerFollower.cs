@@ -8,10 +8,10 @@ namespace Player.Components
         [Header("Follow Settings")] [SerializeField]
         private Transform _target; //i.e .player transform
 
-        [SerializeField] private Vector3 _offset = new Vector3(0f, 0.5f, 0.5f); //default offset
-        [SerializeField] private float _followSpeed = 10f; //
+        [SerializeField] private readonly Vector3 _offset = new Vector3(0f, 0.5f, 0.5f); //default offset
+        [SerializeField] private readonly float _followSpeed = 10f; //
         [SerializeField] private bool _followTarget = true;
-        [SerializeField] private float _smoothTime = 0.15f;
+        [SerializeField] private readonly float _smoothTime = 0.15f;
         private Vector3 _currentVelocity;
         
         private Vector3 _targetOffset;
@@ -42,11 +42,7 @@ namespace Player.Components
             _targetOffset = offset;
         }
         public Vector3 Offset => _offset;
-
-        private void Update()
-        {
-     
-        }
+        
         private void LateUpdate()
         {
           

@@ -11,8 +11,8 @@ namespace Player.Components
         private IPlayerStateProvider _stateProvider;
         
         [Header("Sprint FOV Settings")]
-        [SerializeField] private float _sprintFovMultiplier = 1.2f;
-        [SerializeField] private float _fovSmoothTime = 0.2f;
+        [SerializeField] private  readonly float _sprintFovMultiplier = 1.2f;
+        [SerializeField] private readonly float _fovSmoothTime = 0.2f;
         private bool _isManagedBySprint = true;
         private float _fovVelocity;
         private Camera _camera;

@@ -6,7 +6,7 @@ namespace Player.Interfaces
     [RequireComponent(typeof(PlayerCharacterMovement))]
     public class PlayerController : MonoBehaviour, IInvertible, IPlayerStateProvider
     {
-        [Header("Dependecies")] [SerializeField]
+        [Header("Dependencies")] [SerializeField]
         private MonoBehaviour _inputProviderSource;
 
         private IInputProvider _inputProvider;
@@ -33,7 +33,7 @@ namespace Player.Interfaces
         [SerializeField] private bool _isInverted = false;
 
         [Header("Camera Settings")] [SerializeField]
-        private float _crouchCameraHeightOffset = -1f;
+        private readonly float _crouchCameraHeightOffset = -1f;
 
         private float _inversionFactor = 1f;
         public bool IsInverted => _isInverted;
@@ -70,10 +70,7 @@ namespace Player.Interfaces
             _isInverted = inverted;
             UpdateInversionFactor();
         }
-
-        private void OnDestroy()
-        {
-        }
+        
 
         private bool AssignSources()
         {
@@ -114,7 +111,6 @@ namespace Player.Interfaces
             if (_cameraRotator == null)
             {
                 Debug.LogError("ICameraRotator not found");
-                //enabled = false;
                 return false;
             }
 
@@ -122,7 +118,6 @@ namespace Player.Interfaces
             if (_cameraFollower == null)
             {
                 Debug.LogError("ICameraFollower not found");
-                //enabled = false;
                 return false;
             }
 
@@ -162,20 +157,24 @@ namespace Player.Interfaces
 
         private void HandleCrouch()
         {
-            bool wantsToCrouch = _inputProvider.GetCrouchButtonHeld();
-            if (wantsToCrouch && !_isCrouching)
+            var wantsToCrouch = _inputProvider.GetCrouchButtonHeld();
+            switch (wantsToCrouch)
             {
-                _isCrouching = true;
-                _cameraFollower.SetOffset(_crouchCameraOffset);
-                _crouchable.SetCrouch(true);
-            }
-            else if (!wantsToCrouch && _isCrouching)
-            {
-                if (_crouchable.CanStandUp())
+                case true when !_isCrouching:
+                    _isCrouching = true;
+                    _cameraFollower.SetOffset(_crouchCameraOffset);
+                    _crouchable.SetCrouch(true);
+                    break;
+                case false when _isCrouching:
                 {
-                    _isCrouching = false;
-                    _cameraFollower.SetOffset(_originalCameraOffset);
-                    _crouchable.SetCrouch(false);
+                    if (_crouchable.CanStandUp())
+                    {
+                        _isCrouching = false;
+                        _cameraFollower.SetOffset(_originalCameraOffset);
+                        _crouchable.SetCrouch(false);
+                    }
+
+                    break;
                 }
             }
         }
