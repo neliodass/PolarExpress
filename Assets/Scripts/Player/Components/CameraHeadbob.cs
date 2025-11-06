@@ -6,24 +6,24 @@ namespace Player.Components
     public class CameraHeadbob:MonoBehaviour
     {
         [Header("State Provider")]
-        [Tooltip("Przeciągnij tu obiekt Gracza (ten z PlayerController)")]
+        [Tooltip("Drag the Player object here (the one with PlayerController)")]
         [SerializeField] private MonoBehaviour _stateProviderSource;
         private IPlayerStateProvider _stateProvider;
 
         [Header("Headbob Settings")]
-        [Tooltip("Jak szybki ma być 'bob' przy bazowej prędkości (WalkSpeed)")]
+        [Tooltip("How fast the 'bob' should be at base speed (WalkSpeed)")]
         [SerializeField] private float _baseBobSpeed = 10f;
 
-        [Tooltip("Jak mocny (wysoki) ma być 'bob' przy bazowej prędkości (WalkSpeed)")]
+        [Tooltip("How strong (high) the 'bob' should be at base speed (WalkSpeed)")]
         [SerializeField] private float _baseBobAmount = 0.05f;
 
-        [Tooltip("Jak szybko 'bob' ma wracać do pozycji startowej (mniejsza = płynniej)")]
+        [Tooltip("How quickly 'bob' should return to start position (lower = smoother)")]
         [SerializeField] private float _smoothTime = 0.1f;
         
-        [Tooltip("Mnożnik prędkości 'bobu' - jak bardzo prędkość gracza przyspiesza animację")]
+        [Tooltip("Speed multiplier for 'bob' - how much player speed accelerates the animation")]
         [SerializeField] private float _speedMultiplier = 1.0f;
         
-        [Tooltip("Mnożnik mocy 'bobu' - jak bardzo prędkość gracza zwiększa wysokość animacji")]
+        [Tooltip("Amount multiplier for 'bob' - how much player speed increases animation height")]
         [SerializeField] private float _amountMultiplier = 1.0f;
 
         
@@ -37,7 +37,7 @@ namespace Player.Components
             _stateProvider = _stateProviderSource.GetComponent<IPlayerStateProvider>();
             if (_stateProvider == null)
             {
-                Debug.LogError("Nie znaleziono IPlayerStateProvider na _stateProviderSource!", this);
+                Debug.LogError("IPlayerStateProvider not found on _stateProviderSource!", this);
                 enabled = false;
                 return;
             }
