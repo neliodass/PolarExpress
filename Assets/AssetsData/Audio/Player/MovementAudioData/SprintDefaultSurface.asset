@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0153778eed4552be94d89434e7a544, type: 3}
+  m_Name: SprintDefaultSurface
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.Data.MovementAudioData
+  FootstepClips:
+  - {fileID: 8300000, guid: f9d19da3e91028cfc9716742cee0df88, type: 3}
+  - {fileID: 8300000, guid: 98fca3a71afb8569186900203027ae26, type: 3}
+  - {fileID: 8300000, guid: 05fb00ec684b6fd97af864b966c8d0aa, type: 3}
+  - {fileID: 8300000, guid: 84c5c316d668649459504d6e59bcc702, type: 3}
+  - {fileID: 8300000, guid: ecd0123a922892ed49cc798903c917e5, type: 3}
+  - {fileID: 8300000, guid: d45a595fc194f376388d8e1425c5aa39, type: 3}
+  - {fileID: 8300000, guid: 7ac3d4bcb7bf7a65cab1a81538593009, type: 3}
+  - {fileID: 8300000, guid: 02b290239327c1b5d815e4a5a487d66d, type: 3}
+  Volume: 0.5
+  PitchMin: 0.9
+  PitchMax: 1.1
