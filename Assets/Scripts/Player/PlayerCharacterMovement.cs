@@ -82,19 +82,15 @@ namespace Player
             transform.Rotate(Vector3.up, horizontalRotationAmount);
         }
 
-        private void ApplyGravity()
+        public void ApplyGravity()
         {
-            if (_isGrounded)
-            {
-                if (_verticalVelocity.y < 0f)
-                    _verticalVelocity.y = -2f;
-            }
-            else
-            {
-                _verticalVelocity.y += _gravity * Time.deltaTime;
-            }
+            _verticalVelocity.y += _gravity * Time.deltaTime;
         }
-
+        public void ResetVerticalVelocity()
+        {
+            if (_verticalVelocity.y < 0f)
+                _verticalVelocity.y = -2f;
+        }
         private void ApplyMovement()
         {
             Vector3 finalMovement = (_currentMovementDirection * _currentMovementSpeed) +
@@ -104,7 +100,7 @@ namespace Player
                 new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z).magnitude;
         }
 
-        private void CheckGroundStatus()
+        public void CheckGroundStatus()
         {
             Vector3 sphereOrigin = transform.position +
                                    Vector3.down * ((_characterController.height / 2f) - _groundedCheckOffset);

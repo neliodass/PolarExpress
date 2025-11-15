@@ -13,19 +13,19 @@ namespace Player.Components
 
         [Header("Headbob Settings")]
         [Tooltip("How fast the bob should be at base speed (WalkSpeed)")]
-        [SerializeField] private readonly float _baseBobSpeed = 10f;
+        [SerializeField] private float _baseBobSpeed = 10f;
 
         [Tooltip("How strong (height) the bob should be at base speed (WalkSpeed)")]
-        [SerializeField] private readonly float _baseBobAmount = 0.05f;
+        [SerializeField] private float _baseBobAmount = 0.05f;
 
         [Tooltip("How quickly the bob returns to the start position (smaller = smoother)")]
-        [SerializeField] private readonly float _smoothTime = 0.1f;
+        [SerializeField] private float _smoothTime = 0.1f;
         
         [Tooltip("Bob speed multiplier - how much the player's speed accelerates the animation")]
         [SerializeField] private float _speedMultiplier = 1.0f;
         
         [Tooltip("Bob amount multiplier - how much the player's speed increases the bob height")]
-        [SerializeField] private readonly float _amountMultiplier = 1.0f;
+        [SerializeField] private float _amountMultiplier = 1.0f;
 
         
         

@@ -12,6 +12,8 @@ namespace Player.Interfaces
 
         bool IsMoving();
         float GetCurrentSpeed();
-
+        void ResetVerticalVelocity();
+        void ApplyGravity();
+        void CheckGroundStatus();
     }
 }
