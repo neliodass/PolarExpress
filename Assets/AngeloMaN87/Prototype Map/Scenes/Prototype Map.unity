@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.SurfaceDetector
   raycastOrigin: {fileID: 364542194}
-  raycastDistance: 1.1
+  raycastDistance: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a1df92d7106c7229006ea7fc46f899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurfaceIdentity
-  surfaceMaterial: {fileID: 11400000, guid: 14ff06ae71c991268a2a13a6efb9f31e, type: 2}
+  surfaceMaterial: {fileID: 11400000, guid: ade535f256451757bbbf4b12c6c074bf, type: 2}
 --- !u!1 &1913319820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1279,7 @@ MonoBehaviour:
   footstepEventProviderSource: {fileID: 1523226511}
   playerStateProviderSource: {fileID: 514662109}
   surfaceProviderSource: {fileID: 514662109}
+  landingEventSource: {fileID: 514662109}
   audioDatabase: {fileID: 11400000, guid: 33eeec179fa343fc59990be67d3ff311, type: 2}
 --- !u!1001 &8354416668599502667
 PrefabInstance:

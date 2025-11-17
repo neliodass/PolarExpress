@@ -16,6 +16,7 @@ namespace Player.Components
         [SerializeField] private float _baseBobSpeed = 5f;
         [Tooltip("Bob speed multiplier - how much the player's speed accelerates the animation")]
         [SerializeField] private float _speedMultiplier = 1.0f;
+      
         
         public event Action OnStep;
         private float _timer = 0f;
@@ -32,6 +33,7 @@ namespace Player.Components
                 enabled = false;
                 return;
             }
+            
             
         }
 

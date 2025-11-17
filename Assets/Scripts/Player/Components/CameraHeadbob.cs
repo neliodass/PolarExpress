@@ -33,9 +33,6 @@ namespace Player.Components
         private float _timer = 0f;
         private Vector3 _bobVelocity = Vector3.zero;
 
-        private const float STEP_CYCLE_THRESHOLD = Mathf.PI;
-        private float _lastStepTime = 0f;
-
         private void Awake()
         {
             _stateProvider = _stateProviderSource.GetComponent<IPlayerStateProvider>();

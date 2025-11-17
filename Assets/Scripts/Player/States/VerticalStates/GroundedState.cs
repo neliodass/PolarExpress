@@ -7,6 +7,7 @@ namespace Player.States.VerticalStates
         public void Enter(PlayerController player)
         {
             player.Movable.ResetVerticalVelocity();
+            player.ReportLanding();
         }
 
         public void Update(PlayerController player)

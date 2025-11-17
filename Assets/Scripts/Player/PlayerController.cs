@@ -1,3 +1,4 @@
+using System;
 using ControlsAndInput;
 using Player.States;
 using Player.States.LocomotionStates;
@@ -8,7 +9,7 @@ using UnityEngine.Serialization;
 namespace Player.Interfaces
 {
     [RequireComponent(typeof(PlayerCharacterMovement))]
-    public class PlayerController : MonoBehaviour, IInvertible, IPlayerStateProvider
+    public class PlayerController : MonoBehaviour, IInvertible, IPlayerStateProvider,ILandingEventProvider
     {
         [Header("Dependencies")] [SerializeField]
         private MonoBehaviour _inputProviderSource;
@@ -34,9 +35,10 @@ namespace Player.Interfaces
         public ICameraFollower CameraFollower { get; private set; }
         private ICameraRotator _cameraRotator;
         public ICrouchable Crouchable { get; private set; }
-       
 
 
+        public event Action OnLanded;
+        
         private float _inversionFactor = 1f;
         private bool _isCrouching;
         private IMouseInput _mouseInput;
@@ -179,7 +181,11 @@ namespace Player.Interfaces
             Movable.Rotate(mouseDelta.x * _inversionFactor * PlayerRotationSpeed * Time.deltaTime);
             _cameraRotator?.RotateVertical(mouseDelta.y);
         }
-        
+
+        public void ReportLanding()
+        {
+            OnLanded?.Invoke();
+        }
         #region IPlayerStateProvider Implementation
 
         public float GetCurrentSpeed()
