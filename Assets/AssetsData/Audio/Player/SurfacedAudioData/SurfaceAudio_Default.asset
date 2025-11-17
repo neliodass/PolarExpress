@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471e9a0797ab4f49b2cbeb4c42ec8a7c, type: 3}
+  m_Name: SurfaceAudio_Default
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.Data.SurfacedAudioData
+  SurfaceMaterial: {fileID: 11400000, guid: 14ff06ae71c991268a2a13a6efb9f31e, type: 2}
+  walkData: {fileID: 11400000, guid: 8151924c2f599ccafa60b401ebc5283a, type: 2}
+  sprintData: {fileID: 11400000, guid: 23be6b7a6bb649580b4553ed688ea860, type: 2}
+  crouchData: {fileID: 11400000, guid: 8151924c2f599ccafa60b401ebc5283a, type: 2}

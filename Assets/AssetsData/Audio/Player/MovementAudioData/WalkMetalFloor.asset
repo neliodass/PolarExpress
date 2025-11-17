@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0153778eed4552be94d89434e7a544, type: 3}
+  m_Name: WalkMetalFloor
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.Data.MovementAudioData
+  FootstepClips:
+  - {fileID: 8300000, guid: ee0cd2555b03f720dab7d9016133c082, type: 3}
+  - {fileID: 8300000, guid: 94cad13170ccc18eab085a31b15987a5, type: 3}
+  - {fileID: 8300000, guid: 9f509f4a5999b8aaeae76159a91f85b0, type: 3}
+  - {fileID: 8300000, guid: 5cbe2e76d91935197986097be9b888b7, type: 3}
+  - {fileID: 8300000, guid: 9ebf44b056c569600ba54723b13ff9d0, type: 3}
+  - {fileID: 8300000, guid: 2fad82126cfd9e59196b8d50a9a9d27f, type: 3}
+  - {fileID: 8300000, guid: 7c135b098fbd97b48b481db821623b01, type: 3}
+  - {fileID: 8300000, guid: ac611b92f1ea29ca1bb016ba9bb2b622, type: 3}
+  Volume: 0.5
+  PitchMin: 0.9
+  PitchMax: 1.1

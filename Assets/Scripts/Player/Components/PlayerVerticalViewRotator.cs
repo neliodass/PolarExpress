@@ -5,11 +5,11 @@ namespace Player.Components
 {
     public class PlayerVerticalViewRotator : MonoBehaviour,ICameraRotator, IInvertible
     {
-        [Header("Rotation Settings")] [SerializeField]
-        private readonly float _verticalRotationSpeed = 1f;
+        [Header("Rotation Settings")] 
+        [SerializeField] private float _verticalRotationSpeed = 1f;
 
         [SerializeField] private float _minPitch = -80f;
-        [SerializeField] private readonly float _maxPitch = 80;
+        [SerializeField] private float _maxPitch = 80;
         [SerializeField] private bool _isInverted = false;
 
         private float _currentPitch = 0f;

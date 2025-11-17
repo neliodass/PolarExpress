@@ -1,3 +1,6 @@
+using Player.States.LocomotionStates;
+using Player.States.VerticalStates;
+
 namespace Player.Interfaces
 {
     public interface IPlayerStateProvider
@@ -6,6 +9,9 @@ namespace Player.Interfaces
         float GetCurrentSpeed();
         float GetBaseSpeed();
         bool IsGrounded();
-        public bool IsCrouching();
+        bool IsSprinting();
+        bool IsCrouching();
+        IVerticalState GetCurrentVerticalState();
+        ILocomotionState GetCurrentLocomotionState();
     }
 }

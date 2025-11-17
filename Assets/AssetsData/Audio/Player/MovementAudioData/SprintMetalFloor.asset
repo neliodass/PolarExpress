@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0153778eed4552be94d89434e7a544, type: 3}
+  m_Name: SprintMetalFloor
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.Data.MovementAudioData
+  FootstepClips:
+  - {fileID: 8300000, guid: 7cd0906a8a444c436b13314588b830f8, type: 3}
+  - {fileID: 8300000, guid: a98ca8167012d777f943a2ab957b6e92, type: 3}
+  - {fileID: 8300000, guid: 7e46f1e1a3b04f087bf579b63e177d77, type: 3}
+  - {fileID: 8300000, guid: 2ab1a02920f7782b284ec336fe9d8afa, type: 3}
+  - {fileID: 8300000, guid: 3b01dbd696d0b44e699f3d062433d598, type: 3}
+  - {fileID: 8300000, guid: 25290ec02e6fc70b2b2b89f402f5f3f2, type: 3}
+  - {fileID: 8300000, guid: 79a25472b7309d070b22e5af4c4ad4f2, type: 3}
+  - {fileID: 8300000, guid: 822225122af38299597ca6298da3340d, type: 3}
+  Volume: 0.5
+  PitchMin: 0.9
+  PitchMax: 1.1

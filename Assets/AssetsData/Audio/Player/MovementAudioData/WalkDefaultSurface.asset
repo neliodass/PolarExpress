@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0153778eed4552be94d89434e7a544, type: 3}
+  m_Name: WalkDefaultSurface
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.Data.MovementAudioData
+  FootstepClips:
+  - {fileID: 8300000, guid: 805a89d1f1b0ab19bbb95c249ad0788b, type: 3}
+  - {fileID: 8300000, guid: 45f4fe065a25c4124b90e3f4fffa45fc, type: 3}
+  - {fileID: 8300000, guid: eaccbd5dac571469f9fbf8926c6cec34, type: 3}
+  - {fileID: 8300000, guid: daccb784d4f0905d4b7282181e935e4b, type: 3}
+  - {fileID: 8300000, guid: 4759d622315838fb092045f7aa613e2e, type: 3}
+  - {fileID: 8300000, guid: 7b9fb6ca43a536f0a899cf0d933905a2, type: 3}
+  - {fileID: 8300000, guid: 5817509db6222acccb0c4a8fa8d43c65, type: 3}
+  - {fileID: 8300000, guid: e8798b4a80844d97ea4c9a7ac826a4be, type: 3}
+  - {fileID: 8300000, guid: c8c9e2b89e111605fb12609b11a60e10, type: 3}
+  Volume: 0.5
+  PitchMin: 0.9
+  PitchMax: 1.1
