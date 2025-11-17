@@ -1,11 +1,12 @@
 using Player.Interfaces;
 
-namespace Player.States
+namespace Player.States.LocomotionStates
 {
-    public interface IVerticalState
+    public interface ILocomotionState
     {
         void Enter(PlayerController player);
         void Update(PlayerController player);
         void Exit(PlayerController player);
+        bool CanJump();
     }
 }

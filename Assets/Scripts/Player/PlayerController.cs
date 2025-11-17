@@ -1,5 +1,7 @@
 using ControlsAndInput;
 using Player.States;
+using Player.States.LocomotionStates;
+using Player.States.VerticalStates;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,6 +1,6 @@
 using Player.Interfaces;
 
-namespace Player.States
+namespace Player.States.VerticalStates
 {
     public class GroundedState:IVerticalState
     {

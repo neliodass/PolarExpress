@@ -1,7 +1,7 @@
 using Player.Interfaces;
 using UnityEngine;
 
-namespace Player.States
+namespace Player.States.LocomotionStates
 {
     public class CrouchingState:ILocomotionState
     {
