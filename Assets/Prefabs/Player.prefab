@@ -35,7 +35,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 4607049059081233117}
+  - {fileID: 7094647220812039161}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8560510209447792060
@@ -53,7 +55,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121234832315821526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -131,14 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f118ac8847e4f2e9b93637f83cc5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerCharacterMovement
-  _gravity: -30
-  _jumpForce: 3
-  _groundedCheckOffset: -0.1
-  _groundedCheckRadius: 0.3
+  _jumpForce: 2
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
-  _crouchHeight: 1
+  _standUpBlockMask:
+    serializedVersion: 2
+    m_Bits: 520
 --- !u!114 &8391712205722136906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,15 +157,16 @@ MonoBehaviour:
   _lookSource: {fileID: 7724601010960420220}
   _cameraRotatorSource: {fileID: 0}
   _cameraFollowerSource: {fileID: 0}
-  _crouchSource: {fileID: 0}
-  WalkSpeed: 5
-  SprintSpeed: 8
+  _crouchSource: {fileID: 4277349668014377981}
+  WalkSpeed: 6
+  SprintSpeed: 10
   CrouchSpeed: 2
-  JumpForce: 8
+  jumpForce: 8
   MouseSensitivity: 1
   PlayerRotationSpeed: 10
   _isInverted: 0
-  _crouchCameraHeightOffset: -1
+  originalCameraOffset: {x: 0, y: 0, z: 0}
+  crouchCameraOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &7885996086657478616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +191,200 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8795212c96fe48d09a136fddcbf10028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlsAndInput.MouseInputProvider
+--- !u!1 &1775274187103528105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4607049059081233117}
+  - component: {fileID: 5018690806112014339}
+  - component: {fileID: 7839273135938581868}
+  m_Layer: 8
+  m_Name: FootstepsAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4607049059081233117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775274187103528105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7450368623247333811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &5018690806112014339
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775274187103528105}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7839273135938581868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775274187103528105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9215524fec81511a8c0d15ad8162bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepsAudioPlayer
+  footstepEventProviderSource: {fileID: 0}
+  playerStateProviderSource: {fileID: 4277349668014377981}
+  surfaceProviderSource: {fileID: 6343233595689251119}
+  landingEventSource: {fileID: 4277349668014377981}
+  audioDatabase: {fileID: 11400000, guid: 33eeec179fa343fc59990be67d3ff311, type: 2}
+--- !u!1 &7956661158441499564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7094647220812039161}
+  - component: {fileID: 6343233595689251119}
+  m_Layer: 8
+  m_Name: SurfaceCheckOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7094647220812039161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956661158441499564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7450368623247333811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6343233595689251119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956661158441499564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20f882030fb4e438d7f1340de2b8618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Components.SurfaceDetector
+  raycastOrigin: {fileID: 7094647220812039161}
+  raycastDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _defaultSurface: {fileID: 11400000, guid: 14ff06ae71c991268a2a13a6efb9f31e, type: 2}
