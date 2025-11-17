@@ -15,3 +15,4 @@ MonoBehaviour:
   surfaceAudioDataList:
   - {fileID: 11400000, guid: 0ee386cbe7b5e4ce79c9cecd5cc3eeb6, type: 2}
   - {fileID: 11400000, guid: 5c05dde80537b4dc1aebca549310998f, type: 2}
+  - {fileID: 11400000, guid: b957d828c884a6bb8b148f4526284ca6, type: 2}

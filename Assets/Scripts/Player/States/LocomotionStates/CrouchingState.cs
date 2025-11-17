@@ -3,19 +3,21 @@ using UnityEngine;
 
 namespace Player.States.LocomotionStates
 {
-    public class CrouchingState:ILocomotionState
+    public class CrouchingState : ILocomotionState
     {
         public void Enter(PlayerController player)
         {
             player.Crouchable.SetCrouch(true);
-            
+
             player.CameraFollower.SetOffset(player.crouchCameraOffset);
         }
+
         public void Exit(PlayerController player)
         {
             player.Crouchable.SetCrouch(false);
             player.CameraFollower.SetOffset(player.originalCameraOffset);
         }
+
         public bool CanJump()
         {
             return false;
@@ -32,8 +34,9 @@ namespace Player.States.LocomotionStates
                     player.TransitionToLocomotionState(player.IdleState);
                     return;
                 }
-                player.Movable.Move(movementInput, player.CrouchSpeed);
             }
+
+            player.Movable.Move(movementInput, player.CrouchSpeed);
         }
     }
 }

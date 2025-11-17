@@ -931,6 +931,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.HDAdditionalCameraData
+--- !u!114 &1523226512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523226503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20658cc32e9d4b2089c727a3abf28694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Components.ProceduralFootstepProvider
+  _stateProviderSource: {fileID: 514662109}
+  _baseBobSpeed: 5
+  _speedMultiplier: 1
 --- !u!1001 &1696258291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1030,6 +1045,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4027384853701453749, guid: d315f5d3bbbc82f1787f0aa8105cf0da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1523226509}
+    - targetCorrespondingSourceObject: {fileID: 4027384853701453749, guid: d315f5d3bbbc82f1787f0aa8105cf0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1523226512}
   m_SourcePrefab: {fileID: 100100000, guid: d315f5d3bbbc82f1787f0aa8105cf0da, type: 3}
 --- !u!114 &1696258292 stripped
 MonoBehaviour:
@@ -1115,7 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a1df92d7106c7229006ea7fc46f899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurfaceIdentity
-  surfaceMaterial: {fileID: 11400000, guid: 15e6a7a404ad56c428f446337d997b44, type: 2}
+  surfaceMaterial: {fileID: 11400000, guid: 14ff06ae71c991268a2a13a6efb9f31e, type: 2}
 --- !u!1 &1913319820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1279,7 @@ MonoBehaviour:
   footstepEventProviderSource: {fileID: 1523226511}
   playerStateProviderSource: {fileID: 514662109}
   surfaceProviderSource: {fileID: 514662109}
+  audioDatabase: {fileID: 11400000, guid: 33eeec179fa343fc59990be67d3ff311, type: 2}
 --- !u!1001 &8354416668599502667
 PrefabInstance:
   m_ObjectHideFlags: 0
