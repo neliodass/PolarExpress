@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 namespace Player.Interfaces
 {
     [RequireComponent(typeof(PlayerCharacterMovement))]
-    public class PlayerController : MonoBehaviour, IInvertible, IPlayerStateProvider,ILandingEventProvider
+    public class PlayerController : MonoBehaviour, IInvertible, IPlayerStateProvider,ILandingEventProvider,IInputLockable
     {
         [Header("Dependencies")] [SerializeField]
         private MonoBehaviour _inputProviderSource;
@@ -42,6 +42,7 @@ namespace Player.Interfaces
         private float _inversionFactor = 1f;
         private bool _isCrouching;
         private IMouseInput _mouseInput;
+        private bool _isCameraLocked = false;
         
         public Vector3 originalCameraOffset;
         public Vector3 crouchCameraOffset;
@@ -177,6 +178,7 @@ namespace Player.Interfaces
         }
         private void HandleLook()
         {
+            if (_isCameraLocked) return;
             var mouseDelta = _mouseInput.GetLookDelta() * MouseSensitivity;
             Movable.Rotate(mouseDelta.x * _inversionFactor * PlayerRotationSpeed * Time.deltaTime);
             _cameraRotator?.RotateVertical(mouseDelta.y);
@@ -186,6 +188,15 @@ namespace Player.Interfaces
         {
             OnLanded?.Invoke();
         }
+        
+        #region IInputLockable Implementation
+
+        public void SetCameraLock(bool isLocked)
+        {
+            _isCameraLocked = isLocked;
+        }
+        #endregion
+        
         #region IPlayerStateProvider Implementation
 
         public float GetCurrentSpeed()

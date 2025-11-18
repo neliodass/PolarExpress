@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.PlayerFollower
   _target: {fileID: 0}
-  _offset: {x: 0, y: 0.5, z: 0.5}
-  _followSpeed: 10
+  _offset: {x: 0, y: 0.5, z: 0}
+  _followSpeed: 20
   _followTarget: 1
   _smoothTime: 0.15
 --- !u!1 &3154101046289828944
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.PlayerVerticalViewRotator
   _verticalRotationSpeed: 10
-  _minPitch: -90
-  _maxPitch: 90
+  _minPitch: -85
+  _maxPitch: 85
   _isInverted: 0
 --- !u!1 &4027384853701453749
 GameObject:
@@ -112,6 +112,8 @@ GameObject:
   - component: {fileID: 193883485787865564}
   - component: {fileID: 5224228057371510309}
   - component: {fileID: 3852513772750731790}
+  - component: {fileID: 7267142995984072199}
+  - component: {fileID: 8665896353033991022}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -344,3 +346,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ed7cb6a974cfcab27a6d24a905716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Components.CameraViewHandler
+  _stateProviderSource: {fileID: 0}
+--- !u!114 &7267142995984072199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027384853701453749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6170b95baa6e4b1385adb732e0265a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Components.CameraHeadbob
+  _stateProviderSource: {fileID: 0}
+  _baseBobSpeed: 5
+  _baseBobAmount: 0.1
+  _smoothTime: 0.1
+  _speedMultiplier: 1
+  _amountMultiplier: 1
+--- !u!114 &8665896353033991022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027384853701453749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20658cc32e9d4b2089c727a3abf28694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Components.ProceduralFootstepProvider
+  _stateProviderSource: {fileID: 0}
+  _baseBobSpeed: 5
+  _speedMultiplier: 1
