@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace InteractionUI
 {
-    public class InteractionUIManager:MonoBehaviour
+    public class InteractionUiView:MonoBehaviour
     {
         private Transform _cameraTransform;
 
